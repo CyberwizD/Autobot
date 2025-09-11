@@ -24,7 +24,7 @@ def load_css():
             /* Hide default streamlit elements */
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
-            header {visibility: hidden;}
+
             [data-testid="stSidebarNav"] {display: none;}
             
             /* Page header */
