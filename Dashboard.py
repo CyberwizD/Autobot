@@ -340,7 +340,7 @@ class AutobotApp:
         self.excel_generator = ExcelReportGenerator()
         
         # Initialize Gemini client from .env
-        gemini_api_key = st.secrets["GEMINI_API_KEY"]
+        gemini_api_key = st.secrets.api_key.GEMINI_API_kEY
         if gemini_api_key:
             self.gemini_client = GeminiClient(gemini_api_key)
         else:
