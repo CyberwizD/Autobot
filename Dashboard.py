@@ -17,9 +17,6 @@ from utils.sidebar import render_sidebar
 load_dotenv()
 
 # Configure page
-# Load the favicon
-favicon = Image.open("static/logo.png")
-
 st.set_page_config(
     page_title="Autobot - Automate Your Workflow",
     page_icon="📰",
@@ -48,7 +45,7 @@ def load_css():
             /* Hide default streamlit elements */
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
-            header {visibility: hidden;}
+            
             [data-testid="stSidebarNav"] {display: none;}
             
             /* Custom header */
