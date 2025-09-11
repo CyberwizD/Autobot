@@ -11,7 +11,7 @@ def load_css():
             
             /* Global styles */
             .stApp {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
                 font-family: 'Inter', sans-serif;
             }
             
@@ -29,10 +29,10 @@ def load_css():
             
             /* Page header */
             .reports-header {
-                background: rgba(255, 255, 255, 0.1);
+                background: linear-gradient(135deg, #667eea, #764ba2);
                 backdrop-filter: blur(20px);
                 border-radius: 20px;
-                padding: 2rem;
+                padding: 1rem;
                 margin-bottom: 2rem;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ def load_css():
                 font-weight: 700;
                 background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
                 -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+                /*-webkit-text-fill-color: transparent;*/
                 margin: 0;
                 letter-spacing: -0.02em;
             }
@@ -54,7 +54,7 @@ def load_css():
                 font-size: 1.1rem;
                 font-weight: 400;
                 margin-top: 0.5rem;
-                margin-bottom: 0;
+                margin-bottom: 1;
             }
             
             /* Content sections */
@@ -89,32 +89,34 @@ def load_css():
             /* No data state */
             .no-data-container {
                 text-align: center;
-                padding: 4rem 2rem;
-                background: rgba(255, 255, 255, 0.95);
+                padding: 2rem 2rem;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
                 backdrop-filter: blur(20px);
                 border-radius: 20px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                border: 3px dashed rgba(102, 126, 234, 0.3);
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             }
             
             .no-data-icon {
-                font-size: 5rem;
-                margin-bottom: 1.5rem;
-                opacity: 0.6;
+                font-size: 4rem;
+                margin-bottom: 1rem;
+                opacity: 1;
             }
             
             .no-data-title {
                 font-size: 1.8rem;
                 font-weight: 600;
-                color: #2d3748;
+                color: white;
                 margin-bottom: 1rem;
+                opacity: 1;
             }
             
             .no-data-message {
                 font-size: 1.1rem;
-                color: #718096;
+                color: white;
                 margin-bottom: 2rem;
                 line-height: 1.6;
+                opacity: 0.9;
             }
             
             .action-button {
@@ -235,7 +237,7 @@ def display_reports():
     # Modern header
     st.markdown("""
         <div class="reports-header">
-            <h1 class="reports-title">📊 Generated Reports</h1>
+            <h1 class="reports-title">🗂️ Generated Reports</h1>
             <p class="reports-subtitle">Comprehensive AI-generated analysis and insights</p>
         </div>
     """, unsafe_allow_html=True)
@@ -264,7 +266,7 @@ def display_reports():
                 <div class="no-data-message">
                     You haven't generated any reports yet. Head to the dashboard to upload your data files and create AI-powered analysis reports.
                 </div>
-                <a href="Dashboard.py" class="action-button">
+                <a href="Dashboard" class="action-button">
                     🚀 Generate Your First Report
                 </a>
             </div>
