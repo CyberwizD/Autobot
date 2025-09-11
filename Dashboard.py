@@ -369,7 +369,7 @@ class AutobotApp:
                 <div class="mode-card {}" onclick="selectMode('Personal')">
                     <div class="mode-icon">📨</div>
                     <div class="mode-title">Personal Mode</div>
-                    <div class="mode-description">Chat with AI assistant for quick questions and everyday tasks</div>
+                    <div class="mode-description">Chat with Autobot for quick questions and everyday tasks</div>
                 </div>
                 <div class="mode-card {}" onclick="selectMode('Business')">
                     <div class="mode-icon">📝</div>
@@ -530,7 +530,7 @@ class AutobotApp:
 
     def _generate_ai_analysis(self, data: pd.DataFrame):
         """Generate AI analysis with beautiful progress indicators."""
-        with st.spinner("🧠 AI is analyzing your data... This may take a moment."):
+        with st.spinner("🧠 Autobot is analyzing your data... This may take a moment."):
             try:
                 report_template = self.cache.get_report_template()
                 data_summary = self.data_processor.prepare_for_ai(data)
