@@ -22,7 +22,7 @@ favicon = Image.open("static/logo.png")
 
 st.set_page_config(
     page_title="Autobot - Automate Your Workflow",
-    page_icon=favicon,
+    page_icon="📰",
     layout="wide",
     initial_sidebar_state="auto"
 )
