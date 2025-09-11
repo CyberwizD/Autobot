@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 from typing import Dict, Optional
+from PIL import Image
 
 # Import custom modules
 from utils.data_processor import DataProcessor
@@ -16,9 +17,12 @@ from utils.sidebar import render_sidebar
 load_dotenv()
 
 # Configure page
+# Load the favicon
+favicon = Image.open("static/logo.png")
+
 st.set_page_config(
     page_title="Autobot - Automate Your Workflow",
-    page_icon="static/logo.png",
+    page_icon=favicon,
     layout="wide",
     initial_sidebar_state="auto"
 )
