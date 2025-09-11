@@ -189,7 +189,8 @@ def load_css():
             
             .stTextInput > div > div > input {
                 border: 2px solid rgba(102, 126, 234, 0.2);
-                border-radius: 16px;
+                border-radius: 0px;
+                color: #2d3748;
                 padding: 1rem 1.5rem;
                 font-size: 1rem;
                 transition: all 0.3s ease;
@@ -414,8 +415,7 @@ class AutobotApp:
         user_input = st.text_input(
             "Ask me anything... How can I help you today?",
             key="personal_input",
-            placeholder="Ask me anything... How can I help you today?",
-            label_visibility="collapsed"
+            label_visibility="visible"
         )
         
         # Center the submit button
