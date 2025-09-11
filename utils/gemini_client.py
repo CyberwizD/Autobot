@@ -7,7 +7,7 @@ import pandas as pd
 class GeminiClient:
     def __init__(self, api_key: str):
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-2.5-pro')
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
         self.chat_session = self.model.start_chat(history=[])
     
     def chat(self, message: str) -> str:
