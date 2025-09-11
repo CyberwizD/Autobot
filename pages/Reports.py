@@ -59,7 +59,7 @@ def load_css():
             
             /* Content sections */
             .report-section {
-                background: rgba(255, 255, 255, 0.95);
+                background: linear-gradient(135deg, #667eea, #764ba2);
                 backdrop-filter: blur(20px);
                 border-radius: 20px;
                 padding: 2rem;
