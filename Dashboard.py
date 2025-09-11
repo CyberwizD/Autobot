@@ -19,7 +19,7 @@ load_dotenv()
 st.set_page_config(
     page_title="Autobot - Automate Your Workflow",
     page_icon="static/logo.png",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="auto"
 )
 
