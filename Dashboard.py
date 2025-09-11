@@ -30,7 +30,7 @@ def load_css():
             
             /* Global styles */
             .stApp {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
                 font-family: 'Inter', sans-serif;
             }
             
@@ -48,11 +48,11 @@ def load_css():
             
             /* Custom header */
             .app-header {
-                background: rgba(255, 255, 255, 0.1);
+                background: linear-gradient(135deg, #667eea, #764ba2);
                 backdrop-filter: blur(20px);
                 border-radius: 20px;
-                padding: 2rem;
-                margin-bottom: 2rem;
+                padding: 1rem;
+                margin-bottom: 0rem;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             }
@@ -74,7 +74,15 @@ def load_css():
                 font-size: 1.2rem;
                 font-weight: 400;
                 margin-top: 0.5rem;
-                margin-bottom: 0;
+                margin-bottom: 1;
+            }
+                
+            /* Divider line after header */
+            .header-divider {
+                height: 2px;
+                background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0.3) 80%, transparent 100%);
+                margin: 1.5rem 0;
+                border-radius: 2px;
             }
             
             /* Mode selection cards */
@@ -86,11 +94,11 @@ def load_css():
             }
             
             .mode-card {
-                background: rgba(255, 255, 255, 0.95);
+                /*background: rgba(255, 255, 255, 0.95);*/
                 backdrop-filter: blur(20px);
                 border-radius: 24px;
-                padding: 2rem;
-                width: 280px;
+                padding: 1rem;
+                width: 580px;
                 text-align: center;
                 cursor: pointer;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -155,11 +163,12 @@ def load_css():
             
             /* Content area */
             .content-area {
-                background: rgba(255, 255, 255, 0.95);
+                background: linear-gradient(135deg, #667eea, #764ba2);
                 backdrop-filter: blur(20px);
                 border-radius: 24px;
-                padding: 2.5rem;
-                margin-top: 2rem;
+                padding: 2rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             }
@@ -262,11 +271,12 @@ def load_css():
             
             /* Metrics and data display */
             .metric-card {
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+                background: linear-gradient(135deg, #667eea, #764ba2);
                 backdrop-filter: blur(10px);
                 border-radius: 16px;
-                padding: 1.5rem;
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 1rem;
+                margin-bottom: 2rem;
+                border: 2px solid rgba(255, 255, 255, 0.2);
                 box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
             }
             
@@ -344,6 +354,7 @@ class AutobotApp:
                 <h1 class="app-title">Autobot</h1>
                 <p class="app-subtitle">Automate your workflow with AI-powered intelligence</p>
             </div>
+            <div class="header-divider"></div>
         """, unsafe_allow_html=True)
 
     def render_mode_selection(self):
@@ -355,12 +366,12 @@ class AutobotApp:
         st.markdown("""
             <div class="mode-container">
                 <div class="mode-card {}" onclick="selectMode('Personal')">
-                    <div class="mode-icon">💬</div>
+                    <div class="mode-icon">📨</div>
                     <div class="mode-title">Personal Mode</div>
                     <div class="mode-description">Chat with AI assistant for quick questions and everyday tasks</div>
                 </div>
                 <div class="mode-card {}" onclick="selectMode('Business')">
-                    <div class="mode-icon">📊</div>
+                    <div class="mode-icon">📝</div>
                     <div class="mode-title">Business Mode</div>
                     <div class="mode-description">Upload files and generate comprehensive AI-powered reports</div>
                 </div>
@@ -370,16 +381,26 @@ class AutobotApp:
             "active" if st.session_state.mode == "Business" else ""
         ), unsafe_allow_html=True)
         
-        # Mode selection buttons (hidden but functional)
-        col1, col2, col3 = st.columns([1, 1, 1])
+        # Mode selection buttons under the cards
+        st.markdown("""
+            <div class="mode-buttons">
+        """, unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
         with col1:
-            if st.button("Personal Mode", key="personal_mode"):
+            if st.button("Personal Mode", key="personal_mode", use_container_width=True):
                 st.session_state.mode = "Personal"
                 st.rerun()
         with col2:
-            if st.button("Business Mode", key="business_mode"):
+            if st.button("Business Mode", key="business_mode", use_container_width=True):
                 st.session_state.mode = "Business"
                 st.rerun()
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="header-divider"></div>
+        """, unsafe_allow_html=True)
 
     def render_personal_mode(self):
         """Render the Personal Mode interface."""
@@ -412,7 +433,7 @@ class AutobotApp:
                     response = self.gemini_client.chat(user_input)
                     st.markdown(f"""
                         <div class="ai-response">
-                            <strong>🤖 Assistant:</strong><br>
+                            <strong>🤖 Autobot:</strong><br>
                             {response}
                         </div>
                     """, unsafe_allow_html=True)
@@ -422,12 +443,6 @@ class AutobotApp:
         st.markdown("</div></div>", unsafe_allow_html=True)
 
     def render_business_mode(self):
-        """Render the Business Mode interface."""
-        st.markdown("""
-            <div class="content-area">
-                <h2 class="content-title">📊 Business Intelligence Dashboard</h2>
-        """, unsafe_allow_html=True)
-        
         # File upload area
         st.markdown("""
             <div class="upload-area">
@@ -482,7 +497,7 @@ class AutobotApp:
             st.markdown(f"""
                 <div class="metric-card">
                     <h3>📊 Total Records</h3>
-                    <h2 style="color: #667eea; margin: 0;">{len(data):,}</h2>
+                    <h2 style="color: white; margin: 0;">{len(data):,}</h2>
                 </div>
             """, unsafe_allow_html=True)
         
@@ -490,7 +505,7 @@ class AutobotApp:
             st.markdown(f"""
                 <div class="metric-card">
                     <h3>📅 Date Range</h3>
-                    <h2 style="color: #764ba2; margin: 0; font-size: 1rem;">{data['workdate'].min():%b %Y} - {data['workdate'].max():%b %Y}</h2>
+                    <h2 style="color: white; margin: 0; font-size: 1.7rem;">{data['workdate'].min():%b %Y} - {data['workdate'].max():%b %Y}</h2>
                 </div>
             """, unsafe_allow_html=True)
         
@@ -498,7 +513,7 @@ class AutobotApp:
             st.markdown(f"""
                 <div class="metric-card">
                     <h3>📈 Columns</h3>
-                    <h2 style="color: #667eea; margin: 0;">{len(data.columns)}</h2>
+                    <h2 style="color: white; margin: 0;">{len(data.columns)}</h2>
                 </div>
             """, unsafe_allow_html=True)
         
@@ -506,12 +521,12 @@ class AutobotApp:
             st.markdown(f"""
                 <div class="metric-card">
                     <h3>💾 Size</h3>
-                    <h2 style="color: #764ba2; margin: 0;">{data.memory_usage(deep=True).sum() / 1024 / 1024:.1f}MB</h2>
+                    <h2 style="color: white; margin: 0;">{data.memory_usage(deep=True).sum() / 1024 / 1024:.1f}MB</h2>
                 </div>
             """, unsafe_allow_html=True)
         
         # Data table
-        st.dataframe(data.head(), use_container_width=True)
+        st.dataframe(data, use_container_width=True)
 
     def _generate_ai_analysis(self, data: pd.DataFrame):
         """Generate AI analysis with beautiful progress indicators."""
