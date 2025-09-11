@@ -388,7 +388,8 @@ def _display_user_analysis(data: dict):
 st.set_page_config(
     page_title="Generated Reports - Autobot",
     page_icon="📊",
-    layout="wide"
+    layout="centered",
+    initial_sidebar_state="auto"
 )
     
 load_css()
