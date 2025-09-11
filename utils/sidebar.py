@@ -18,17 +18,17 @@ def render_sidebar():
 
         st.divider()
         
-        # Cache status with modern styling
-        st.markdown("### 💾 Cache Status")
-        cache = StreamlitCache()
-        cache_info = cache.get_cache_info()
+        # # Cache status with modern styling
+        # st.markdown("### 💾 Cache Status")
+        # cache = StreamlitCache()
+        # cache_info = cache.get_cache_info()
         
-        # Display cache info in a more visual way
-        for key, value in cache_info.get("cache_status", {}).items():
-            status_icon = "✅" if value else "❌"
-            st.markdown(f"**{key.replace('_', ' ').title()}**: {status_icon}")
+        # # Display cache info in a more visual way
+        # for key, value in cache_info.get("cache_status", {}).items():
+        #     status_icon = "✅" if value else "❌"
+        #     st.markdown(f"**{key.replace('_', ' ').title()}**: {status_icon}")
         
-        if st.button("🗑️ Clear Cache", use_container_width=True):
-            cache.clear_all()
-            st.success("Cache cleared!")
-            st.rerun()
+        # if st.button("🗑️ Clear Cache", use_container_width=True):
+        #     cache.clear_all()
+        #     st.success("Cache cleared!")
+        #     st.rerun()
